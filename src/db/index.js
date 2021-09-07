@@ -1,7 +1,7 @@
 const Database = require('sqlite-async');
 
 class MyDb {
-  constructor(dbName) {
+  static init(dbName) {
     this.dbName = dbName;
     Database.open(this.dbName).then(async db => {
       this.instance = db;
@@ -22,15 +22,15 @@ class MyDb {
     }).catch(e => console.error('Can not open database connection', e));
   }
 
-  async run(query, ...args) {
+  static async run(query, ...args) {
     return await this.instance.run(query, args);
   }
 
-  async get(query, ...args) {
+  static async get(query, ...args) {
     return await this.instance.get(query, args);
   }
 
-  async all(query, ...args) {
+  static async all(query, ...args) {
     return await this.instance.all(query, args);
   }
 }

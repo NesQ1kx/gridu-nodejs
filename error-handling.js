@@ -18,9 +18,17 @@ class HttpForbiddenException extends HttpException {
   }
 }
 
+class HttpBadRequestException extends HttpException {
+  constructor(message) {
+    super(message);
+    this.code = 400;
+  }
+}
+
 module.exports = {
   HttpException,
   HttpNotFoundException,
   HttpForbiddenException,
+  HttpBadRequestException
 }
 
